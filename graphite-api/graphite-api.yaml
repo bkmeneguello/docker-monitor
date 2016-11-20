@@ -1,0 +1,12 @@
+search_index: /opt/graphite/index
+finders:
+  - graphite_api.finders.whisper.WhisperFinder
+functions:
+  - graphite_api.functions.SeriesFunctions
+  - graphite_api.functions.PieFunctions
+whisper:
+  directories:
+    - /opt/graphite/storage/whisper
+carbon:
+  hosts:
+    - carbon:7002
