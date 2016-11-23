@@ -1,0 +1,21 @@
+version: '2.1'
+volumes:
+  whisper:
+    driver: local
+services:
+  carbon:
+    build: ./carbon-whisper
+    image: bkmeneguello/carbon-whisper
+    volumes:
+    - whisper:/opt/graphite/storage/whisper
+    - ./carbon-whisper/conf:/opt/graphite/conf:ro
+    ports:
+    - "2003-2004:2003-2004"
+  graphite:
+    build: ./graphite-api
+    image: bkmeneguello/graphite-api
+    volumes:
+    - whisper:/opt/graphite/storage/whisper
+    - ./graphite-api/graphite-api.yaml:/etc/graphite-api.yaml:ro
+    links:
+    - carbon

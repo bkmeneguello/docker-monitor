@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+  statsd:
+    build: ./statsd
+    image: bkmeneguello/statsd
+    volumes:
+    - ./statsd/config.js:/statsd/config.js:ro
+    links:
+    - carbon
+    ports:
+    - "8125:8125/udp"

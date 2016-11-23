@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  netdata:
+    build: ./netdata
+    image: bkmeneguello/netdata
+    volumes:
+    - /proc:/host/proc:ro
+    - /sys:/host/sys:ro
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./netdata/netdata.conf:/etc/netdata/netdata.conf
+    links:
+    - carbon
+    ports:
+    - "19999:19999"
+    cap_add:
+    - SYS_PTRACE

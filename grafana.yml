@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  grafana:
+    build: ./grafana
+    image: bkmeneguello/grafana
+    links:
+    - graphite
+    ports:
+    - "3000:3000"
