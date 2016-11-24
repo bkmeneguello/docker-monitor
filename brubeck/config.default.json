@@ -1,0 +1,36 @@
+{
+  "sharding" : false,
+  "server_name" : "brubeck",
+  "dumpfile" : "./brubeck.dump",
+  "capacity" : 15,
+  "expire" : 20,
+  "http" : ":8080",
+
+  "backends" : [
+    {
+      "type" : "carbon",
+      "address" : "carbon",
+      "port" : 2003,
+      "frequency" : 10
+    }
+  ],
+
+  "samplers" : [
+    {
+      "type" : "statsd",
+      "address" : "0.0.0.0",
+      "port" : 8125,
+      "workers" : 4,
+      "multisock" : true,
+      "multimsg" : 8
+    },
+    {
+      "type" : "statsd-secure",
+      "address" : "0.0.0.0",
+      "port" : 9126,
+	  "max_drift" : 3,
+	  "hmac_key" : "750c783e6ab0b503eaa86e310a5db738",
+	  "replay_len" : 8000
+    }
+  ]
+}

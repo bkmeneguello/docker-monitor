@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+  brubeck:
+    build: ./brubeck
+    image: bkmeneguello/brubeck
+    volumes:
+    - ./brubeck/config.default.json:/config.default.json:ro
+    links:
+    - carbon
+    ports:
+    - "8125:8125/udp"
