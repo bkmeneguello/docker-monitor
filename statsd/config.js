@@ -121,6 +121,9 @@ Optional Variables:
 {
   graphitePort: 2003
 , graphiteHost: "carbon"
+, graphite: {
+    legacyNamespace: true
+  }
 , port: 8125
 , backends: [ "./backends/graphite", "./backends/console" ]
 }
